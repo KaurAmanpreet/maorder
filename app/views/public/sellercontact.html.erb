@@ -1,0 +1,39 @@
+<% if !@orders.nil?%>
+        <% @orders.each do |order| %>
+        <% @id = order.product_id %>
+       <% @product = Product.find(@id)%>
+       <% @photo = Photo.find_by_product_id(@product) %>
+       <% @us_id = @product.user_id%>
+       <% @user = User.find_by_id(@us_id)%>
+       <% @user1 = Userdetail.find_by_user_id(@user)%>
+				<div class="col-xs-10 col-xs-offset-1 whats_app" style="box-shadow:1px 1px 10px #000;margin-top:50px;margin-bottom:50px;		" >
+				<h3 class="text-center" ><%= @product.productName %></h3>
+				<% if @photo%>
+                    <%= image_tag("/uploads/"+ @photo.photo1,:class=>'img-responsive',:alt => '',:width => '100px',:height=>'200px',:style => "margin:0 auto;") %>
+                    <%else%> 
+              <%= image_tag("image_soon.gif",:class=>'img-responsive',:alt => '',:width => '200px',:height=>'200px',:style => "margin:0 auto;") %>
+
+                    <%end %>
+					<!-- <img src="assets/img/shop4.png" alt="" class="img-responsive" style="margin:0 auto;">	 -->
+					<h4 class="text-center" style="margin-top:20px;">
+<i class="fa fa-seller" aria-hidden="true" style="color:#34af23;font-weight:bold"></i>
+		
+		 <strong>Seller Name :</strong>
+				<%= @user1.name %>
+		
+				</h4>
+					<h4 class="text-center" style="margin-top:20px;">
+<i class="fa fa-whatsapp" aria-hidden="true" style="color:#34af23;font-weight:bold"></i>
+		
+
+		
+		 <strong>WhatsApp Number :</strong>
+				<%= @user1.number %> 
+		
+				</h4>
+				<div class="col-xs-12" style="text-align:center;padding-bottom:20px;">
+					<input type="submit" class="btn-lg btn-success" value="Send Email" style="background:none;color:#34af23;font-size:15px;" >
+				</div>
+				</div>
+<%end %>
+<%end%>				

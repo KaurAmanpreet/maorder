@@ -1,0 +1,154 @@
+        <div class="col-lg-12 main_cont">
+            <div class="col-xs-12">
+            <i class="fa fa-4x fa-caret-down filter_respo" aria-hidden="true" style="color:#444"></i>
+            </div>
+            <div class="col-sm-3 col-xs-12 col-md-2 fliter_container">
+            <h4 class="text-center"><i class="fa fa-filter" aria-hidden="true"></i>REFINE</h4>
+                <div class="col-xs-12 filter" style="padding:0;margin:0;text-align:justify">
+                <%= form_for :filter ,:url=>{:action=>"filter"} do |f|%> 
+
+                <h4>Price</h4>
+                <div class="col-xs-12">
+                <%= f.check_box('price1',:value=>'200-300') %>
+                <%= f.hidden_field('price1val',:value=>'200-300') %>
+                    RS200-RS300
+                </div>
+                <div class="col-xs-12">
+                <%= f.check_box('price2',:value=>'400-500') %>
+                    RS400-RS500
+                </div>
+                <div style="text-align:center;margin-top:80px;position:fixed">
+                <%= submit_tag('Find' ,:style => "padding:0px 20px;border:none;background:#080;color:#fff")%>
+                </div>
+               <% end %> 
+                </div>
+                <div class="col-xs-12 filter" style="text-align:justify">
+                    <h4>Brand</h4>
+                    <div class="col-xs-12">
+                    <input type="checkbox">
+                    Nike
+                </div>
+                <div class="col-xs-12">
+                    <input type="checkbox">
+                    Adidass
+                </div>
+                <div class="col-xs-12">
+                    <input type="checkbox">
+                    Rebook
+                </div>
+                <div class="col-xs-12">
+                    <input type="checkbox">
+                    Denim
+                </div>
+                       <div class="col-xs-12">
+                    <input type="checkbox">
+                    Nike
+                </div>
+                <div class="col-xs-12">
+                    <input type="checkbox">
+                    Adidass
+                </div>
+                <div class="col-xs-12">
+                    <input type="checkbox">
+                    Rebook
+                </div>
+                <div class="col-xs-12">
+                    <input type="checkbox">
+                    Denim
+                </div>
+                       <div class="col-xs-12">
+                    <input type="checkbox">
+                    Nike
+                </div>
+                <div class="col-xs-12">
+                    <input type="checkbox">
+                    Adidass
+                </div>
+                <div class="col-xs-12">
+                    <input type="checkbox">
+                    Rebook
+                </div>
+                <div class="col-xs-12">
+                    <input type="checkbox">
+                    Denim
+                </div>
+                </div>
+                <div class="col-xs-12 filter" style="text-align:justify">
+                    <h4>Features</h4>
+                           <div class="col-xs-12">
+                    <input type="checkbox">
+                    Color
+                </div>
+                <div class="col-xs-12">
+                    <input type="checkbox">
+                    Size
+                </div>
+                <div class="col-xs-12">
+                    <input type="checkbox">
+                    Shape
+                </div>
+                <div class="col-xs-12">
+                    <input type="checkbox">
+                   Type
+                </div>
+                </div>
+
+            </div>
+            
+
+
+        <div class="col-sm-9 col-xs-12 col-md-10 products_container">
+        
+        <div class="col-sm-12">
+        <div class="col-xs-12">
+          
+            <h3>Men </h3>
+            <div class="col-sm-11  big_line">
+            <div class=" col-xs-4 col-sm-2 small_line"></div>
+            </div>
+        </div>  
+
+<%if @products.size > 0%>
+<% @products.each do |product| %>
+   <div class="col-sm-3 col-xs-5 prod_card" style="padding:0px;">
+            <div class="col-xs-12 item_img" style="padding:0px;">
+            <%if product.photo.size > 0 %>
+                <%  product.photo.each do |f| %>
+                    <%= link_to(image_tag("/uploads/"+ f.photo1,:width=>'100%',:height=>'265px'),{:action=>'info',:id=>product.id}) %> 
+                <%end%>
+            <%else%>
+            <%= link_to(image_tag("image_soon.gif",:width=>'95%',:height=>'265px'),{:action=>'info',:id=>product.id}) %>
+            <%end%>
+                <div class="col-xs-12 desc">
+                    <div class="col-xs-12">
+                        </div>    
+                    <%= link_to(product.productName,:action=>'info',:id=>product.id) %><br>
+                     <%= product.productCode %>
+                    </div>
+            <div class="col-sm-6 col-xs-6">
+             <%= image_tag("star5.png",:class =>'img-responsive star',:alt => '',:width=>'100%',:height=>'180px')%>
+            </div>
+            <div class="col-xs-4 col-xs-offset-2">
+                (300)
+            </div>
+            
+        <div class="col-xs-7" style="word-wrap: break-word;">
+       
+             <strong>Rs.&nbsp;<%= product.price %></strong>
+             
+        </div>
+                <div class="col-xs-5" style="padding-top:7px; ">
+
+                    <div class="off" style="color:#fff">
+                        <%= link_to('More Info',:action=>'info',:id=>product.id) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%end%>
+<%else%>
+<%= "No Product Found related to your search"%>
+<%end%>
+</div>
+</div>
+</div>

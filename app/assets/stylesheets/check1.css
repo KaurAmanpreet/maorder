@@ -1,0 +1,44 @@
+.register{
+	padding: 10px;
+	text-align: center;
+}
+.social{
+	padding-top:100px;
+}
+.facebook{
+	padding:15px;
+}
+.first{
+	padding:5px 0px 20px 10px; 
+}
+.last{
+	padding:0px 0px 20px 10px;
+}
+.left{
+	border-right: 2px solid rgba(0,0,0,0.1);
+}
+.chnagepassword{
+  padding: 15px;
+  font-size: 25px;
+}
+@media screen and (min-width:250px) and (max-width: 768px){
+ .left{
+ 	border: none;
+ 	padding-bottom:20px;
+ 	border-bottom:2px solid rgba(0,0,0,0.1);
+ }
+ .social{
+ 	padding-top: 30px;
+ }
+}
+@media screen and (min-width: 250px) and (max-width: 360px){
+  .login1{
+  	margin-left: -25px;
+  }
+  .forget{
+  	left:35px;
+  }
+  .f{
+  	right: 50px;
+  }
+}

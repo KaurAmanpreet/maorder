@@ -1,0 +1,132 @@
+<script>
+$(function() {
+    $('.tooltip-wrapper').tooltip({position: "bottom"});
+});
+</script>
+<style type="text/css">
+  .tooltip-wrapper {
+  display: inline-block; /* display: block works as well */
+}
+
+.tooltip-wrapper .btn[disabled] {
+  /* don't let button block mouse events from reaching wrapper */
+  pointer-events: none;
+}
+
+.tooltip-wrapper.disabled {
+  /* OPTIONAL pointer-events setting above blocks cursor setting, so set it here */
+  cursor: pointer;
+}
+.clr
+{
+  margin-top:20px;background:none;color:#080;
+} 
+.cover
+{
+  
+  border :2px solid #444;
+  padding:1px;
+  box-shadow: 4px 4px 15px #888;
+}
+.cover:hover
+{
+  border :4px solid #009;
+}
+
+</style>
+  
+<%= form_for :cart,:url=>{:controller=>'public',:action=>'addCart'} do |f| %>
+  <%= f.hidden_field("product_id",:value=>@product.id) %>
+   <%if @product.photo.size > 0 %>
+   <div class="col-xs-12" style="padding-top:20px;padding-bottom:20px;">
+        
+        <div class="col-sm-6" style="padding:0;margin:0;box-shadow:2px 0px 10px #777">
+        
+  <% @product.photo.each do |f| %>
+            <div class="col-sm-6 col-sm-offset-3 col-xs-offset-2 col-xs-6 large_thumb" style="">
+              <%= image_tag("/uploads/"+ f.photo5,:class=>'img-responsive small_img cover ') %>
+            <!-- <img src="assets/img/download.jpg" alt="" class="img-responsive"> -->
+            </div>
+            <div class="col-xs-12 col-sm-11 col-sm-offset-2 col-xs-offset-0" style="padding:0;margin-top:40px; margin-bottom:30px;">  
+          <div class="col-xs-2 ">
+              <%= image_tag("/uploads/"+ f.photo1,:size=>'60x60',:class=>"imgs thumb_image small_img cover") %>
+                <!-- <img src="assets/img/download.jpg"  alt=""  class="imgs"> -->
+            </div>
+            <div class="col-xs-2">
+              <%= image_tag("/uploads/"+ f.photo2,:size=>'60x60',:class=>"imgs thumb_image small_img cover ") %>
+                <!-- <img src="assets/img/download.jpg"  alt=""  class="imgs"> -->
+            </div>
+            <div class="col-xs-2 ">
+                <%= image_tag("/uploads/"+ f.photo3,:size=>'60x60',:class=>"imgs thumb_image small_img cover ") %>
+            </div>
+            <div class=" col-xs-2 ">
+                <%= image_tag("/uploads/"+ f.photo4,:size=>'60x60',:class=>'imgs thumb_image small_img cover ') %>
+            </div>
+            <%end%> 
+            <% else %>
+            <div class="col-sm-6" style="padding:0;margin:0;box-shadow:2px 0px 10px #777">
+              <div class="col-sm-6 col-sm-offset-3 col-xs-offset-2 col-xs-6 large_thumb" style="">
+              <%= image_tag("image_soon.gif",:class=>'img-responsive small_img cover, ') %>
+            <!-- <img src="assets/img/download.jpg" alt="" class="img-responsive"> -->
+            </div>
+            <div class="col-xs-12 col-sm-11 col-sm-offset-2 col-xs-offset-0" style="padding:0;margin-top:40px; margin-bottom:30px;">  
+          <div class="col-xs-2 ">
+              <%= image_tag("image_soon.gif",:size=>'60x60',:class=>"imgs thumb_image small_img cover") %>
+                <!-- <img src="assets/img/download.jpg"  alt=""  class="imgs"> -->
+            </div>
+            <div class="col-xs-2">
+              <%= image_tag("image_soon.gif",:size=>'60x60',:class=>"imgs thumb_image small_img cover ") %>
+                <!-- <img src="assets/img/download.jpg"  alt=""  class="imgs"> -->
+            </div>
+            <div class="col-xs-2 ">
+                <%= image_tag("image_soon.gif",:size=>'60x60',:class=>"imgs thumb_image small_img cover ") %>
+            </div>
+            <div class=" col-xs-2 ">
+                <%= image_tag("image_soon.gif",:size=>'60x60',:class=>'imgs thumb_image small_img cover ') %>
+            </div>
+            <%end%>
+            </div> 
+            
+        </div>
+        </div>
+  
+  
+          <div class="col-sm-5 col-sm-offset-1 col-xs-12 col-xs-offset-0 features" style="box-shadow:1px 1px 10px #777">
+          
+            <h2 style="color:#f43841"> <strong>     <%= @product.productName  %></strong></h2>
+            <h4> <small>Brand : </small> <%= @product.brand  %></h4>
+            <!-- <h4> <small>SIZE : </small> XXL</h4> -->
+            <h3><strong> <small>Price: </small>Rs. <%= @product.price  %></strong></h3>
+            <!-- <h4> <small>POPULARITY: </small> <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></h4> -->
+            <h4> <small>Product Code: </small><%= @product.productCode  %></h4>
+        
+        <% if @features%>
+        <% for attribute in @feature_showlist.keys %>
+         
+        <h4> <small><%= attribute.humanize %>: </small><%= @features.attributes[attribute].to_s %></h4>
+        <% end %>
+         
+             <div class="col-sm-4 col-sm-offset-0 col-xs-6 col-xs-offset-3"  >
+              <%if @value=="1"%>
+     <div class="tooltip-wrapper disabled" data-title="The product is already added in cart!">
+        <button class="btn btn-lg btn-success des_btn" disabled  style="margin-top:20px;background:none;color:#080;"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to Cart</button>
+    </div>
+              <%else%>
+              <%= f.hidden_field("qty",:value=>"1",:size=>'10') %>
+               <%= submit_tag( "Add to Cart ",:class=>'btn btn-lg btn-success clr' ,)  %><%end%>
+              </div>
+              <div class="col-sm-4 col-sm-offset-0 col-xs-6 col-xs-offset-3">
+                <button class="btn btn-success btn-lg clr" style=""><i class="fa fa-heart-o" aria-hidden="true"></i>  Wish List </button>
+              </div>
+
+         <% end %> 
+      <%end%>
+</div>
+<div>    
+    
+  </div><br>
+     <div>
+        
+           </div>
+</div>
+                              

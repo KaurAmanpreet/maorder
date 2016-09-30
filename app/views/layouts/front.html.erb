@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- HEAD SECTION -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>MA ORDERS</title>
+    <!--GOOGLE FONT -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
+     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
+     </script>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--GOOGLE FONT -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <!--BOOTSTRAP MAIN STYLES -->
+    <%= stylesheet_link_tag 'bootstrap','wish','check1','boot_slider','font-awesome.min','style','log', media: 'all' %>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+        <%= javascript_include_tag 'jquery','bootstrap.min','modernizr.custom.79639','jquery.ba-cond.min','jquery.slitslider','custom','boot_slider' %>
+    <style type="text/css">
+
+    .full
+    {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      height: 100%;
+      width: 100% ;
+      background: rgba(0,0,0,0.5);     
+    }
+    .mid
+    {
+      color:#fff;
+      height: 350px;
+      width: 50%;
+      position: absolute;
+      top:15%;
+      left:25%;
+      background: #1abc9c;
+      border-radius: 10px;
+
+    }
+    .ad_option
+    {
+      text-align:center;
+    }
+    .ad_option a
+    {
+      color:#fff;
+    }
+    .logi
+    {
+      background:#fff;border:none;color:#f75b16;
+    }
+    .logi:hover
+    {
+      transition:all ease-out 0.5s;
+      background:#f75b16;
+      color: #fff;
+      box-shadow: 1px 1px 10px #888; 
+    }
+    @media only screen and (min-width:300px) and (max-width:533px) {
+
+  .mid
+    {
+      left:5%;
+      width:90%;
+    }
+}
+    @media only screen and (min-width:240px) and (max-width:300px) {
+
+  .mid
+    {
+      left:1%;
+      width:98%;
+      font-size: 11px;
+    }
+}
+.close
+{
+  
+  padding-top:20px;font-weight:bold;
+  cursor: pointer;
+  position: relative;
+  z-index: 2000;
+  color:#fff;
+}
+.close:hover
+{
+  transition:all ease-out 1s;
+ font-weight:bold;
+ font-size: 20px;
+ color: #f75b16;
+}
+</style>
+</head>
+    <!--END HEAD SECTION -->
+<body>   
+
+<!-- LOGIN PANEL -->
+
+<div class="col-xs-12 full"style="display: none;
+      position: fixed;
+      z-index: 1000;
+      height: 100%;
+      width: 100% ;
+      background: rgba(0,0,0,0.5);">
+  
+  <div class="mid">
+     <div class="col-xs-1 close pull-right">
+      X
+  </div>
+     <div class="col-xs-12" style="margin-top:-30px; " >
+      <h4 style="text-align:center;">
+        <i class="fa fa-2x fa-sign-in" aria-hidden="true"></i>
+        LOGIN PANEL
+      </h4>
+  </div>
+  <div class="col-xs-10 col-xs-offset-1">
+ 
+<%= form_for :user, :url=>{:controller=>'login',:action=>'authenticate'} do |f| %>
+    
+        <div class="form-group inner-addon left-addon">
+
+    <label for="email">Email address:</label>
+  <%= f.text_field("email",:placeholder=>"Enter Email",:class=>"form-control") %>
+
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    
+  <%= f.password_field("password",:placeholder=>"Enter Password",:class=>"form-control") %>
+
+  </div>
+  <div class="col-xs-12">
+  
+    <div class=" col-xs-12 ad_option">
+      <input type="checkbox" > keep me Signed In  
+    </div>
+    <div class=" col-xs-12 ad_option">
+      <a href="#">Forget Passoword</a>  
+    </div>
+  </div>
+  <div class="col-xs-8 col-xs-offset-2" style="margin-top:20px">
+    <div class="col-sm-6 col-sm-offset-3   col-xs-12">
+  <input type="submit" class="btn-lg btn-primary logi"  value="LOGIN">
+  </div>
+  
+  </div>
+  </div>
+<% end %>
+    
+  </div>
+</div>
+<!-- END OF LOGIN PANEL --> 
+     <!-- NAV SECTION -->
+        
+            <div class="col-sm-12 menu_bar">
+            <div class="col-sm-3 col-sm-offset-1 col-xs-5 logo">
+                <%= image_tag("logo.png",  :class => 'img-responsive',:alt => '')%>
+            </div>
+            <div class="col-xs-7 icon">
+            <div class="bar_container">
+                <div class="bar one"></div>
+                <div class="bar two"></div>
+                <div class="bar three"></div>
+                </div>
+            </div>  
+            <div class="col-sm-8 items">
+             <ul>
+               <li>
+                  <a href="">
+                    <i class="fa fa-home fa-3x" aria-hidden="true"></i>
+                      <%= link_to("HOME",:controller=>'public',:action=>'view')%> 
+                   </a> 
+                </li>
+               <li>
+                  <a href="">
+                    <i class="fa fa-3x fa-flag-checkered" aria-hidden="true"></i>
+                      ABOUT 
+                   </a> 
+                </li>
+                
+                 <li>
+                  <a href="">
+                    <i class="fa fa-3x fa-caret-square-o-down" aria-hidden="true"></i>
+                      CATEGORY
+                   </a> 
+                </li>
+                 <li>
+                  <a href="">
+                    <i class="fa fa-3x fa-envelope" aria-hidden="true"></i>
+                      CONTACT
+                   </a> 
+                </li>
+                 <li>
+                  <a href="">
+                    <i class="fa fa-shopping-cart fa-3x" aria-hidden="true"></i>
+                      <%= link_to("Account",:controller=>'public',:action=>'wishlist')%> 
+                   </a> 
+                </li>                
+              </ul>
+            </div>
+        </div>    
+        
+  <div class="col-xs-12  srch" style="padding:0;">
+        
+        <div class="col-sm-7 col-sm-offset-1 col-xs-12 " >
+          
+
+          <%= form_for :search ,:url=>{:action=>'searchProducts'} do |f|%>
+              <%= f.text_field("name",:placeholder=>'Search by Product....',:required=>true,:class=>'search')%>
+              <%= submit_tag("Search",{:class=>"btn btn-warning"})%>
+            <% end %>
+        </div> 
+        <div class="col-sm-4 col-xs-12 side_srch">
+          
+            <% if session[:email] %>  
+          <div class="col-xs-4 side_menu">Welcome&nbsp;<%=session[:email].split("@").first%></div>
+         
+            <div class="col-xs-3  side_menu"><%=link_to("Logout",:controller=>'login',:action=>'logout')%></div>
+            <% else %>
+          <div class="col-xs-4 side_menu"></div>
+
+            <div class="col-xs-3 login  side_menu">Login</div>
+          <% end %>
+
+          <div class="col-xs-5 side_menu" aria-hidden="true">
+            <%= link_to("",{:controller=>'public',:action=>'cartview'},:class=>'fa fa-shopping-cart fa-2x') %> <span style="font-size:12px"><%= session[:cart_size] ? session[:cart_size].to_s + " " : "" %></span>
+          </div>
+        </div>
+          <h5 class="cate" style="color:#fff;text-align:center;">
+          Categories
+        </h5>
+        <div class="col-xs-2 col-xs-offset-5 cat_icon">
+      
+          <i class="fa fa-caret-down" aria-hidden="true" style="color:#fff;"></i>
+        </div>
+         
+    <div class="menu col-sm-12 col-xs-12">
+        <span>
+            <ul id="nav">
+                <% @maincategory.each do |maincategory| %>
+                    <li><a href="#"><%= maincategory.mainCategory %></a>
+                    <div class="subs">
+                    <div class="wrp2">
+                        <ul>
+                            <% if maincategory.category %>
+                                <% @cat1 = Category.where("maincategory_id = #{maincategory.id} and is_active = '1'")%>
+                                <% @cat1.each do |cat| %>
+                                    <li>
+                                        <h3><%= cat.category %></h3>
+                                        <% if cat.subcategory %>
+                                            <% @sub1 = Subcategory.where("category_id = #{cat.id} and is_active = '1'")%>
+                                            <% @sub1.each do |sub| %>
+                                            <ul>
+                                                <li>
+                                                    
+                                                    <%= link_to(sub.subCategory,{:controller=>'public',:action=>'searchProducts',:id=>sub.id}) %>
+                                                    
+                                                </li>
+                                            </ul>
+                                            <%end%>
+                                        <%end%>     
+                                    </li>
+                                <%end%>
+                            <%end%>
+                        </ul>
+                        </div>
+                        </div>      
+                    </li>
+                <%end%>   
+            </ul>
+        </span>
+    </div>       
+</div>
+        <!-- END OF NAV SECTIONS -->  
+        <!-- STSRTING SLIDER -->
+
+<%= yield %>
+
+        
+
+      <!-- Starting Footer -->
+  <!-- Starting Footer -->
+
+       <div class="col-xs-12 footer" style="padding:0;">
+    
+    <div class="col-xs-12" style="margin-top:20px;">
+              <div class="col-sm-4 col-xs-12 col-xs-offset-0" >
+      <h3><i class="fa fa-comment-o" aria-hidden="true"></i> Feed Back</h3>
+          <div class="form-group">
+  <label for="usr">Name:</label>
+  <input type="text" class="form-control" id="usr">
+</div>
+<div class="form-group">
+  <label for="email">Password:</label>
+  <input type="email" class="form-control" id="pwd">
+</div>
+<div class="form-group">
+  <label for="Feedback">Feedback:</label>
+  <textarea class="form-control" rows="5" id="comment"></textarea>
+</div>
+        <div class="col-xs-12">
+  <input type="submit" class="btn btn-default " style="color:#ffa106;font-weight:bolder"  value="Feedback">
+  </div>
+      </div>
+      <div class="col-sm-3 col-xs-12 col-xs-offset-0 col-sm-offset-1" style="margin-top:40px;">
+                    <h3 style="color:#fff"> <i class="fa fa-phone" aria-hidden="true"></i> Contact Us</h3>
+                     
+                    <div class="home"><span class="glyphicon glyphicon-home"></span>
+                    <h5 style="color:#fff"> xyz abcdef<br>Punjab</h5>
+                    </div>
+                    <div class="home"><span class="glyphicon glyphicon-map-marker">
+                       <h4 style="color:#fff"> E-mail:asdn@ads.com</h4>
+                    </span></div><br>
+                    <div class="home" ><span class="glyphicon glyphicon-phone">
+                        <h5 style="color:#fff"> Call Us At: 121323233 , 23243455</h5>
+                    </span></div>
+                </div>
+                <div class="col-sm-4 col-xs-12  footer_map">
+            <h3><i class="fa fa-map-signs" aria-hidden="true"></i> Map</h3>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501907.3759256443!2d73.15691559155505!3d31.00307747000805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391964aa569e7355%3A0x8fbd263103a38861!2sPunjab!5e0!3m2!1sen!2sin!4v1468566415613" width="100%" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+    </div>
+    
+        <div class="col-xs-12" style="margin-bottom:20px;">
+       <div class="col-sm-2 col-sm-offset-2 col-xs-12 col-xs-offset-0 cols_footer">
+        <h3> Company </h3>
+        <h3><small>About Us</small></h3>
+        <h3><small>Login</small></h3>
+        <h3><small>Register</small></h3>
+        <h3><small>Products</small></h3>
+       </div>
+       <div class="col-sm-2 col-sm-offset-1 col-xs-12 col-xs-offset-0 cols_footer">
+        <h3> Categories </h3>
+        <h3><small>Women's</small></h3>
+        <h3><small>Men's</small></h3>
+        <h3><small>Kids</small></h3>
+        <h3><small>Electronics</small></h3>
+       </div>
+       <div class="col-sm-2 col-xs-12 col-xs-offset-0 col-sm-offset-1 cols_footer">
+        <h3> Contact us </h3>
+        <h3><small>Facebook</small></h3>
+        <h3><small>Twitter</small></h3>
+        <h3><small>Pinterest</small></h3>
+        <h3><small>WhatsApp</small></h3>
+       </div>
+</div>
+      </div> 
+        <div class="col-xs-12 text-center" style="background:#444;color:#fff">
+          <h5>&copy;NugenInfo.com</h5>
+      </div>
+    <!--END FOOTER SECTION --> 
+    <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY LIBRARY -->
+
+  
+</body>
+</html>
